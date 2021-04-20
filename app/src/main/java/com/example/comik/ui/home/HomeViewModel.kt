@@ -9,12 +9,14 @@ import com.example.comik.data.model.Comic
 import com.example.comik.data.model.Creator
 import com.example.comik.data.repository.ComicRepository
 import com.example.comik.data.repository.CreatorRepository
+import com.example.comik.utils.APIConfig.FORMAT_COMIC
 import com.example.comik.utils.APIConfig.IMAGE_NOT_AVAILABLE
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.*
 
-const val COUNT_EVENT = 4
+const val COUNT_EVENT = 6
 const val COUNT_CREATOR = 7
 const val COUNT_BANNER = 5
 
@@ -64,7 +66,8 @@ class HomeViewModel(
     }
 
     private fun getBanners() {
-        comicRepository.getComics()
+        val calendar = Calendar.getInstance()
+        comicRepository.getComicByYear(FORMAT_COMIC, calendar.get(Calendar.YEAR))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map {

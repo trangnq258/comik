@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="detailVM"
+            type="com.example.comik.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDetailFilterByComic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_4"
+            app:characters="@{detailVM.characters}"
+            app:creators="@{detailVM.creators}"
+            app:events="@{detailVM.events}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:series="@{detailVM.series}"
+            app:spanCount="3"
+            app:stories="@{detailVM.stories}"
+            app:type="@{detailVM.type}" />
+
+        <ImageView
+            android:id="@+id/imageNoResult"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_40"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_no_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{detailVM.isListEmpty}" />
+
+        <com.eyalbira.loadingdots.LoadingDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_40"
+            app:LoadingDots_auto_play="true"
+            app:LoadingDots_dots_color="@color/color_thunder_bird"
+            app:LoadingDots_dots_count="3"
+            app:LoadingDots_dots_size="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{detailVM.isLoading}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -16,7 +16,9 @@ val dbModule = module {
             androidContext(),
             AppDatabase::class.java,
             DATABASE_NAME
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
     single { get<AppDatabase>().comicDao() }
 }

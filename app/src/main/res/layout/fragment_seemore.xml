@@ -31,6 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_4"
+            android:layoutAnimation="@anim/layout_animation_up_to_down"
             android:paddingBottom="@dimen/dp_50"
             app:characters="@{seeMoreVM.character}"
             app:creators="@{seeMoreVM.creator}"
@@ -40,8 +41,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonBack"
             app:series="@{seeMoreVM.series}"
-            app:spanCount="2"
+            app:spanCount="3"
             app:stories="@{seeMoreVM.story}"
             app:type="@{seeMoreVM.type}" />
+
+        <com.eyalbira.loadingdots.LoadingDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:LoadingDots_auto_play="true"
+            app:LoadingDots_dots_color="@color/color_thunder_bird"
+            app:LoadingDots_dots_count="3"
+            app:LoadingDots_dots_size="@dimen/dp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{seeMoreVM.isLoading}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

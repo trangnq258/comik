@@ -21,7 +21,10 @@ data class Comic(
     val description: String?,
     @Ignore
     @SerializedName("modified")
-    val modified: String?,
+    var modified: String,
+    @Ignore
+    @SerializedName("upc")
+    val upc: String?,
     @Ignore
     @SerializedName("pageCount")
     val pageCount: Int?,
@@ -33,18 +36,27 @@ data class Comic(
     val thumbnail: Image?,
     @Ignore
     @SerializedName("images")
-    val image: List<Image>?
+    val image: List<Image>?,
+    @Ignore
+    @SerializedName("prices")
+    val prices: List<Price>?,
+    @Ignore
+    @SerializedName("dates")
+    val dates: List<Date>
 ) {
 
     constructor(id: Int, title: String?, description: String?, thumbnail: Image?) : this(
         id,
         title,
         description,
+        "",
         null,
         null,
         null,
         thumbnail,
-        null
+        null,
+        null,
+        listOf()
     )
 
     companion object {

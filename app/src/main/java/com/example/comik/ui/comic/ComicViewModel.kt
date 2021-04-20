@@ -21,30 +21,40 @@ class ComicViewModel(
     val isEmpty: LiveData<Boolean>
         get() = _isEmpty
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     init {
         getComics()
     }
 
     private fun getComics() {
+        _isLoading.value = true
         comicRepository.getComics()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                _isLoading.value = false
                 _comic.value = it
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)
     }
 
     fun getComicByYear(format: String, year: Int) {
+        _isLoading.value = true
         comicRepository.getComicByYear(format, year)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                _isLoading.value = false
                 _comic.value = it
                 _isEmpty.value = it.isEmpty()
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)

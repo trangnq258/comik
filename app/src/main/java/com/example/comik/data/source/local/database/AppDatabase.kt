@@ -20,7 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun comicDao(): ComicDao
 
     companion object {
-        const val DATABASE_VERSION = 2
+        const val DATABASE_VERSION = 3
         const val DATABASE_NAME = "comicFavorite"
         const val EXPORT_SCHEME = false
     }

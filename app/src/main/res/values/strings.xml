@@ -5,17 +5,21 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_setting">Setting</string>
     <string name="title_internet">Internet Connection</string>
+    <string name="title_detail">Detail Comic</string>
 
     <string name="text_character">Characters</string>
     <string name="text_series">Series</string>
     <string name="text_event">Events</string>
-    <string name="text_store">Stories</string>
+    <string name="text_story">Stories</string>
     <string name="text_creator">Creators</string>
     <string name="text_search">Year</string>
     <string name="text_hint_search">Enter year</string>
     <string name="text_choose_year">Choose year</string>
     <string name="text_page_count">Page Count: </string>
-    <string name="text_modified">Modified: </string>
+    <string name="text_published">Published: </string>
+    <string name="text_upc">UPC:</string>
+    <string name="text_summary">Summary</string>
+    <string name="text_price">Price</string>
     <string name="text_about_app">About App</string>
     <string name="text_share_app">Share app</string>
     <string name="text_night_mode">Night Mode</string>

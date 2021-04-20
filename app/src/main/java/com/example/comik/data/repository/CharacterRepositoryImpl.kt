@@ -10,4 +10,7 @@ class CharacterRepositoryImpl(
 
     override fun getCharacters(): Observable<List<Character>> =
         remote.getCharacters().map { it.data.results }
+
+    override fun getCharactersFilterByComic(comicId: Int): Observable<List<Character>> =
+        remote.getCharactersFilterByComic(comicId).map { it.data.results }
 }

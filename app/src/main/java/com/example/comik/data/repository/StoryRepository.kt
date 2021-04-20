@@ -5,4 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface StoryRepository {
     fun getStories(): Observable<List<Story>>
+    fun getStoriesFilterByComic(comicId: Int): Observable<List<Story>>
 }

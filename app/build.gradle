@@ -35,6 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         dataBinding true
     }
@@ -86,4 +87,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.1"
+    implementation 'com.eyalbira.loadingdots:loading-dots:1.0.2'
 }

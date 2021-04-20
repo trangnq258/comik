@@ -67,14 +67,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), View.OnClickListener {
     }
 
     private fun clickItemEvent(event: Event) {
+        if (event.description == null) {
+            event.description = ""
+        }
         val action =
-            HomeFragmentDirections.actionHomeFragmentToListComicFragment(event.id, BUNDLE_EVENT)
+            HomeFragmentDirections.actionHomeFragmentToListComicFragment(
+                event.id,
+                BUNDLE_EVENT,
+                event.description
+            )
         findNavController().navigate(action)
     }
 
     private fun clickItemCreator(creator: Creator) {
         val action =
-            HomeFragmentDirections.actionHomeFragmentToListComicFragment(creator.id, BUNDLE_CREATOR)
+            HomeFragmentDirections.actionHomeFragmentToListComicFragment(
+                creator.id,
+                BUNDLE_CREATOR,
+                ""
+            )
         findNavController().navigate(action)
     }
 

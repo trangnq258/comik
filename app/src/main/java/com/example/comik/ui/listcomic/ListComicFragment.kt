@@ -1,5 +1,8 @@
 package com.example.comik.ui.listcomic
 
+import android.graphics.text.LineBreaker
+import android.os.Build
+import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.comik.R
@@ -7,8 +10,12 @@ import com.example.comik.base.BaseFragment
 import com.example.comik.data.model.Comic
 import com.example.comik.databinding.FragmentListcomicBinding
 import com.example.comik.ui.adapter.ComicAdapter
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_comic.recyclerComic
+import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_listcomic.*
+import kotlinx.android.synthetic.main.fragment_listcomic.appBarLayout
+import kotlinx.android.synthetic.main.fragment_listcomic.textDescription
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListComicFragment : BaseFragment<FragmentListcomicBinding>() {
@@ -19,6 +26,15 @@ class ListComicFragment : BaseFragment<FragmentListcomicBinding>() {
     private val comicAdapter = ComicAdapter(::clickItemComic)
 
     override fun setupViews() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            textDescription.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+        }
+        toolbarBack.setNavigationIcon(R.drawable.ic_back)
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, _ ->
+            ActivityCompat.invalidateOptionsMenu(
+                activity
+            )
+        })
     }
 
     override fun initData() {
@@ -27,11 +43,11 @@ class ListComicFragment : BaseFragment<FragmentListcomicBinding>() {
             lifecycleOwner = viewLifecycleOwner
             listComicVM = viewModel
         }
-        viewModel.getComicsByType(args.type, args.id)
+        viewModel.getComicsByType(args.type, args.id, args.description)
     }
 
     override fun initActions() {
-        toolBarBack.setNavigationOnClickListener {
+        toolbarBack.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
     }

@@ -13,4 +13,7 @@ class EventRepositoryImpl(
             it.data.results
         }
     }
+
+    override fun getEventsFilterByComic(comicId: Int): Observable<List<Event>> =
+        remote.getEventsFilterByComic(comicId).map { it.data.results }
 }

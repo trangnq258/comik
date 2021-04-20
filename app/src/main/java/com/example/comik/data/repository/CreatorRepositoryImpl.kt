@@ -11,4 +11,7 @@ class CreatorRepositoryImpl(
     override fun getCreators(): Observable<List<Creator>> = remote.getCreators().map {
         it.data.results
     }
+
+    override fun getCreatorsFilterByComic(comicId: Int): Observable<List<Creator>> =
+        remote.getCreatorsFilterByComic(comicId).map { it.data.results }
 }

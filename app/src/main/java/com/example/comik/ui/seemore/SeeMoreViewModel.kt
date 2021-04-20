@@ -47,6 +47,10 @@ class SeeMoreViewModel(
     val type: LiveData<String>
         get() = _type
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun getSeeMore(bundle: String) {
         when (bundle) {
             BUNDLE_CHARACTER -> {
@@ -73,30 +77,37 @@ class SeeMoreViewModel(
     }
 
     private fun getEvents() {
+        _isLoading.value = true
         eventRepository.getEvents()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                _isLoading.value = false
                 _event.value = it
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)
     }
 
     private fun getCreators() {
+        _isLoading.value = true
         creatorRepository.getCreators()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                _isLoading.value = false
                 _creator.value = it
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)
     }
 
     private fun getCharacters() {
+        _isLoading.value = true
         characterRepository.getCharacters()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -106,26 +117,32 @@ class SeeMoreViewModel(
                 }
             }
             .subscribe({
+                _isLoading.value = false
                 _character.value = it
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)
     }
 
     private fun getStories() {
+        _isLoading.value = true
         storyRepository.getStories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                _isLoading.value = false
                 _story.value = it
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)
     }
 
     private fun getSeries() {
+        _isLoading.value = true
         seriesRepository.getSeries()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -135,8 +152,10 @@ class SeeMoreViewModel(
                 }
             }
             .subscribe({
+                _isLoading.value = false
                 _series.value = it
             }, {
+                _isLoading.value = false
                 _error.value = it.message.toString()
             })
             .addTo(disposables)

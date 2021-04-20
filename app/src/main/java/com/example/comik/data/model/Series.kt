@@ -9,7 +9,7 @@ data class Series(
     @SerializedName("title")
     val title: String,
     @SerializedName("description")
-    val description: String,
+    var description: String,
     @SerializedName("modified")
     val modified: String,
     @SerializedName("thumbnail")

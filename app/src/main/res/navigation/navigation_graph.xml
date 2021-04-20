@@ -23,8 +23,7 @@
     <fragment
         android:id="@+id/navigationSetting"
         android:name="com.example.comik.ui.setting.SettingFragment"
-        android:label="SettingFragment" >
-    </fragment>
+        android:label="SettingFragment" />
     <fragment
         android:id="@+id/navigationHome"
         android:name="com.example.comik.ui.home.HomeFragment"
@@ -63,6 +62,9 @@
         <argument
             android:name="type"
             app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -71,5 +73,19 @@
         <argument
             android:name="idComic"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionDetailFragmentToZoomFragment"
+            app:destination="@id/zoomFragment" />
+        <action
+            android:id="@+id/actionDetailFragmentToListComicFragment"
+            app:destination="@id/listComicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/zoomFragment"
+        android:name="com.example.comik.ui.detail.ZoomFragment"
+        android:label="ZoomFragment">
+        <argument
+            android:name="image"
+            app:argType="string" />
     </fragment>
 </navigation>

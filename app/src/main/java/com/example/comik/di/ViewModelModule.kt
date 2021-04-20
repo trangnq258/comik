@@ -14,6 +14,6 @@ val viewModelModule = module {
     viewModel { ComicViewModel(get()) }
     viewModel { SeeMoreViewModel(get(), get(), get(), get(), get()) }
     viewModel { ListComicViewModel(get()) }
-    viewModel { DetailViewModel(get()) }
+    viewModel { DetailViewModel(get(), get(), get(), get(), get()) }
     viewModel { FavoriteViewModel(get()) }
 }

@@ -9,4 +9,6 @@ class StoryRepositoryImpl(
 ) : StoryRepository {
 
     override fun getStories(): Observable<List<Story>> = remote.getStories().map { it.data.results }
+    override fun getStoriesFilterByComic(comicId: Int): Observable<List<Story>> =
+        remote.getStories().map { it.data.results }
 }

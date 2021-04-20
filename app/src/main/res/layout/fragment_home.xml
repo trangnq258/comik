@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.25" />
+                app:layout_constraintGuide_percent="0.3" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerBanner"
@@ -53,7 +53,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/viewGradientBottom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:spi_dotSelectedColor="@android:color/white" />
+                app:spi_dotSelectedColor="?attr/backColor" />
 
             <View
                 android:id="@+id/viewTop"
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_4"
-                android:text="@string/text_store"
+                android:text="@string/text_story"
                 android:textColor="?attr/textBold"
                 android:textSize="@dimen/sp_14"
                 app:layout_constraintEnd_toEndOf="@+id/imageButtonStories"
@@ -175,7 +175,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textEvent"
-                app:spanCount="2"
+                app:spanCount="3"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_event" />
 

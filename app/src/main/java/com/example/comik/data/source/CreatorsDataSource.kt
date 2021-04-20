@@ -5,4 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface CreatorsDataSource {
     fun getCreators(): Observable<CreatorResponse>
+    fun getCreatorsFilterByComic(comicId: Int): Observable<CreatorResponse>
 }
